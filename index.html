@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Control de Espesor - Pharmaceutica Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#eff0f6",
+                        "surface-container-high": "#e7e8ee",
+                        "primary-fixed-dim": "#a1c9ff",
+                        "on-primary-fixed-variant": "#004880",
+                        "on-tertiary-fixed-variant": "#733500",
+                        "secondary-fixed-dim": "#7dd0ff",
+                        "secondary-fixed": "#c4e7ff",
+                        "tertiary-fixed-dim": "#ffb688",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#d2e4ff",
+                        "on-tertiary-container": "#ffb98d",
+                        "on-tertiary-fixed": "#311300",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "primary": "#003e6f",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#642d00",
+                        "primary-container": "#005696",
+                        "surface-tint": "#1961a1",
+                        "secondary": "#00658b",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc7",
+                        "on-background": "#191c20",
+                        "on-secondary-container": "#005575",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e1e2e8",
+                        "on-surface-variant": "#414750",
+                        "background": "#f8f9ff",
+                        "outline-variant": "#c1c7d2",
+                        "outline": "#727781",
+                        "on-surface": "#191c20",
+                        "on-secondary-fixed": "#001e2c",
+                        "inverse-primary": "#a1c9ff",
+                        "surface-container": "#ededf4",
+                        "surface-dim": "#d9dae0",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#874001",
+                        "secondary-container": "#6ecbfe",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#a5cbff",
+                        "surface-variant": "#e1e2e8",
+                        "surface-container-low": "#f2f3f9",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2e3035",
+                        "on-primary-fixed": "#001c37"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            bottom: 0;
+            color: transparent;
+            cursor: pointer;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<header class="bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none fixed top-0 z-50 w-full flex justify-between items-center px-6 h-16">
+<div class="text-xl font-bold text-primary dark:text-blue-200 tracking-tighter uppercase font-headline">Capspharma Quality</div>
+<nav class="hidden md:flex items-center gap-8 h-full">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-primary font-manrope text-sm font-bold tracking-tight h-full flex items-center" href="#">Tablero</a>
+<a class="text-primary dark:text-blue-300 border-b-2 border-primary pb-1 font-manrope text-sm font-bold tracking-tight h-full flex items-center mt-1" href="#">Historial de Lotes</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-primary font-manrope text-sm font-bold tracking-tight h-full flex items-center" href="#">Reportes</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-full text-slate-600">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-full text-slate-600">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-slate-950 h-screen w-72 flex flex-col fixed left-0 top-16 bottom-0 z-40 py-8">
+<div class="px-8 mb-8">
+<p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">LINEA</p>
+<p class="text-primary font-bold text-sm">Capsulas de Gelatina</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">monitor_weight</span>
+<span class="text-sm font-medium">Control de Peso</span>
+</a>
+<a class="bg-white dark:bg-slate-800 text-primary dark:text-blue-300 font-bold rounded-l-lg ml-4 pl-4 py-3 border-r-4 border-primary flex items-center gap-3 transition-transform duration-200 hover:translate-x-1" href="#control-espesor">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">straighten</span>
+<span class="text-sm">Control de Espesor</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1" href="#control-humedad">
+<span class="material-symbols-outlined">opacity</span>
+<span class="text-sm font-medium">Control de Humedad</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1" href="#inspeccion-final">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="text-sm font-medium">Inspección Final</span>
+</a>
+</nav>
+<div class="mt-auto px-8 space-y-6">
+<button id="btn-nuevo-registro" class="w-full bg-primary py-3 rounded-lg text-on-primary font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">add</span> Nuevo Registro
+                </button>
+<div class="border-t border-outline-variant pt-6 space-y-3">
+<a class="flex items-center gap-2 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold" href="#">
+<span class="material-symbols-outlined text-base">verified_user</span> Protocolos de Seguridad
+                    </a>
+<a class="flex items-center gap-2 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold" href="#">
+<span class="material-symbols-outlined text-base">help_outline</span> Soporte
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-72 flex-1 p-8 md:p-10 min-h-screen bg-background">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<section class="mb-10">
+<h1 class="text-3xl font-extrabold text-primary tracking-tight mb-6 font-headline">Control de Proceso de Fabricación de Cápsulas</h1>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 bg-surface-container-low p-6 rounded-xl">
+<div class="flex flex-col gap-1">
+<label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider">MPCD No.</label>
+<select class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5" id="header-mpcd"><option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider">Tamaño</label>
+<select class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5" id="header-tamano">
+<option>00E</option>
+<option>000</option>
+<option selected>0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider">Turno</label>
+<select class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5" id="header-turno">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider">Granel</label>
+<input class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5" id="header-granel" placeholder="Lote granel..." type="text" value=""/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider">Fecha</label>
+<div class="relative">
+<input class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5 w-full" id="header-fecha" type="date"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Focus: CONTROL DE ESPESOR -->
+<section class="bg-surface-container-lowest rounded-2xl p-8 border border-primary/20 shadow-lg ring-1 ring-primary/5 scroll-mt-24" id="control-espesor">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-8 bg-primary rounded-full"></div>
+<h2 class="text-2xl font-headline font-extrabold text-on-surface tracking-tight uppercase">CONTROL DE ESPESOR</h2>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-2 rounded-xl">
+<div class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-sm text-primary">barcode_scanner</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Modo Secuencial Activo</span>
+</div>
+<input class="bg-white border-outline-variant rounded-lg text-xs font-bold px-3 py-2 focus:ring-1 focus:ring-primary" type="time" value="10:30"/>
+</div>
+</div>
+<div class="space-y-12">
+<!-- Sección 1: Pared Sencilla -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-6 bg-primary rounded-full"></span>
+<h3 class="font-headline font-bold text-lg text-on-surface uppercase tracking-tight">Espesor de Pared (mm)</h3>
+</div>
+<div class="overflow-x-auto hide-scrollbar rounded-xl border border-slate-100">
+<table class="w-full border-separate border-spacing-0 text-left" id="table-pared">
+<thead>
+<tr class="bg-surface-container-highest">
+<th class="py-4 px-2 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-b border-surface-dim">Componente</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M1</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M2</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M3</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M4</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M5</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M6</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M7</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M8</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M9</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M10</th>
+<th class="py-4 px-2 text-center text-[10px] font-black uppercase tracking-widest text-primary border-b border-surface-dim bg-primary/5">Prom</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="group hover:bg-primary/5 measurement-row" data-component="Tapa" data-section="Pared">
+<td class="py-4 px-4 font-bold text-primary text-xs">TAPA</td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" id="first-input" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-primary rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="py-4 px-4 text-center font-black text-sm text-primary bg-primary/5 prom-cell">0.00</td>
+</tr>
+<tr class="group hover:bg-secondary/5 measurement-row" data-component="Cuerpo" data-section="Pared">
+<td class="py-4 px-4 font-bold text-primary text-xs">CUERPO</td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="py-4 px-4 text-center font-black text-sm text-secondary bg-secondary/5 prom-cell">0.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Sección 2: Espesor de Domo -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-6 bg-indigo-500 rounded-full"></span>
+<h3 class="font-headline font-bold text-lg text-on-surface uppercase tracking-tight">Espesor de Domo (mm)</h3>
+</div>
+<div class="overflow-x-auto hide-scrollbar rounded-xl border border-slate-100">
+<table class="w-full border-separate border-spacing-0 text-left" id="table-domo">
+<thead>
+<tr class="bg-surface-container-highest">
+<th class="py-4 px-2 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-b border-surface-dim">Componente</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M1</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M2</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M3</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M4</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M5</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M6</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M7</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M8</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M9</th>
+<th class="py-4 px-1 text-center text-[10px] font-bold text-on-surface-variant border-b border-surface-dim">M10</th>
+<th class="py-4 px-2 text-center text-[10px] font-black uppercase tracking-widest text-indigo-700 border-b border-surface-dim bg-indigo-50">Prom</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="group hover:bg-indigo-50/50 measurement-row" data-component="Tapa" data-section="Domo">
+<td class="py-4 px-4 font-bold text-primary text-xs">TAPA</td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-indigo-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="py-4 px-4 text-center font-black text-sm text-indigo-700 bg-indigo-50 prom-cell">0.00</td>
+</tr>
+<tr class="group hover:bg-emerald-50/50 measurement-row" data-component="Cuerpo" data-section="Domo">
+<td class="py-4 px-4 font-bold text-primary text-xs">CUERPO</td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="p-0.5"><input class="text-center bg-surface-container-low border-none focus:bg-white focus:ring-1 focus:ring-emerald-500 rounded py-2 text-sm appearance-none w-[70px] px-1" max="999.99" step="0.01" type="number" value="0.00"/></td>
+<td class="py-4 px-4 text-center font-black text-sm text-emerald-700 bg-emerald-50 prom-cell">0.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<div class="mt-12 flex flex-wrap gap-6 items-center justify-between border-t border-surface-container pt-8">
+<div class="flex items-center gap-6">
+<div class="text-[10px] text-on-surface-variant flex items-center gap-4 uppercase font-bold tracking-wider">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-green-500 rounded-full shadow-sm shadow-green-200"></span> Cumple Especificación</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-error rounded-full shadow-sm shadow-error/20"></span> Fuera de Rango</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-end gap-4">
+<button class="flex items-center gap-2 px-8 py-3 bg-surface-container-highest text-primary font-bold rounded-lg hover:bg-surface-container-high transition-colors text-sm">
+<span class="material-symbols-outlined text-xl">picture_as_pdf</span>
+                                Exportar PDF
+                            </button>
+<button class="flex items-center gap-2 px-10 py-3 bg-primary text-on-primary font-bold rounded-lg shadow-lg shadow-primary/20 hover:opacity-90 transition-all text-sm" id="finalizar-btn">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">save</span>
+                                Finalizar Registro de Espesor
+                            </button>
+</div>
+</div>
+</section>
+<div class="h-24" id="inspeccion-final"></div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 full-width py-4 mt-auto">
+<div class="flex flex-col md:flex-row justify-center items-center gap-8 w-full px-6">
+<span class="font-inter text-[0.6875rem] uppercase tracking-widest text-slate-400 dark:text-slate-500">© 2024 Precision Editorial Pharmaceutical Systems. Todos los derechos reservados.</span>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-inter text-[0.6875rem] uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-secondary hover:underline decoration-1" href="#">Procedimientos Operativos Estándar</a>
+<a class="font-inter text-[0.6875rem] uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-secondary hover:underline decoration-1" href="#">Política de Aseguramiento de Calidad</a>
+<a class="font-inter text-[0.6875rem] uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-secondary hover:underline decoration-1" href="#">Contactar Supervisor</a>
+</div>
+</div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const thicknessSection = document.getElementById('control-espesor');
+            if (!thicknessSection) return;
+
+            // 0. Initialize Defaults
+            const dateInput = document.getElementById('header-fecha');
+            if(dateInput) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+
+            // 1. Initial Values & Focus
+            const firstInput = document.getElementById('first-input');
+            if (firstInput) {
+                firstInput.focus();
+                firstInput.select();
+            }
+
+            const btnNuevoRegistro = document.getElementById('btn-nuevo-registro');
+            if (btnNuevoRegistro) {
+                btnNuevoRegistro.addEventListener('click', () => {
+                    document.getElementById('header-mpcd').selectedIndex = 0;
+                    document.getElementById('header-tamano').value = "0";
+                    document.getElementById('header-turno').selectedIndex = 0;
+                    document.getElementById('header-granel').value = "";
+                    
+                    if(dateInput) {
+                        dateInput.value = new Date().toISOString().split('T')[0];
+                    }
+
+                    const tInput = thicknessSection.querySelector('input[type="time"]');
+                    if(tInput) {
+                        const now = new Date();
+                        tInput.value = now.toTimeString().slice(0,5);
+                    }
+
+                    const clearInputs = Array.from(thicknessSection.querySelectorAll('input[type="number"]'));
+                    clearInputs.forEach(input => {
+                        input.value = "0.00";
+                    });
+                    
+                    allRows.forEach(row => calculateAverage(row));
+
+                    if (firstInput) {
+                        firstInput.focus();
+                        firstInput.select();
+                    }
+                });
+            }
+
+            const allRows = document.querySelectorAll('.measurement-row');
+            const inputs = Array.from(thicknessSection.querySelectorAll('input[type="number"]'));
+
+            // 2. Format on Blur
+            function formatInputValue(input) {
+                let val = parseFloat(input.value);
+                if (isNaN(val)) val = 0;
+                input.value = val.toFixed(2);
+            }
+
+            // 3. Real-time Calculations
+            function calculateAverage(row) {
+                const rowInputs = Array.from(row.querySelectorAll('input[type="number"]'));
+                const values = rowInputs.map(input => parseFloat(input.value) || 0);
+                
+                // standard: divide by 10 as per samples
+                const sum = values.reduce((a, b) => a + b, 0);
+                const avg = sum / 10;
+                
+                const promCell = row.querySelector('.prom-cell');
+                if (promCell) {
+                    promCell.textContent = avg.toFixed(2);
+                }
+            }
+
+            allRows.forEach(row => {
+                const rowInputs = row.querySelectorAll('input[type="number"]');
+                rowInputs.forEach(input => {
+                    input.addEventListener('input', () => calculateAverage(row));
+                    input.addEventListener('blur', () => {
+                        formatInputValue(input);
+                        calculateAverage(row);
+                    });
+                });
+                // Initial calculation
+                calculateAverage(row);
+            });
+
+            // Input Navigation (Enter key)
+            inputs.forEach((input, index) => {
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const nextInput = inputs[index + 1];
+                        if (nextInput) {
+                            nextInput.focus();
+                            nextInput.select();
+                        }
+                    }
+                });
+            });
+
+            // 4. Console Export
+            // Destino de datos: https://docs.google.com/spreadsheets/d/1N8op4T6Byg86WQIrmUDaX-0LfxBEsLSW7to1S9j5jtM/edit?usp=sharing
+            const finalizarBtn = document.getElementById('finalizar-btn');
+            if (finalizarBtn) {
+                finalizarBtn.addEventListener('click', () => {
+                    const mpcd = document.getElementById('header-mpcd').value;
+                    const tamano = document.getElementById('header-tamano').value;
+                    const turno = document.getElementById('header-turno').value;
+                    const granel = document.getElementById('header-granel').value;
+                    const fecha = document.getElementById('header-fecha').value;
+                    const timeInput = thicknessSection.querySelector('input[type="time"]');
+                    const hora_registro = timeInput ? timeInput.value : "";
+
+                    const rowsToSave = [];
+
+                    allRows.forEach(row => {
+                        const average = parseFloat(row.querySelector('.prom-cell').textContent);
+                        
+                        if (average > 0) {
+                            const rowInputs = Array.from(row.querySelectorAll('input[type="number"]'));
+                            const measurements = rowInputs.map(input => parseFloat(parseFloat(input.value || 0).toFixed(2)));
+                            
+                            const tipo = row.dataset.section.toUpperCase();
+                            const componente = row.dataset.component.toUpperCase();
+                            
+                            const flatRow = [
+                                mpcd,
+                                tamano,
+                                turno,
+                                granel,
+                                fecha,
+                                hora_registro,
+                                tipo,
+                                componente,
+                                ...measurements,
+                                average
+                            ];
+                            
+                            rowsToSave.push(flatRow);
+                        }
+                    });
+
+                    if (rowsToSave.length === 0) {
+                        alert("No hay datos para guardar (todos los promedios son 0).");
+                        return;
+                    }
+
+                    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbzPH3U1bX83S89kb58WiwXDvDHJk89lyH09LtWoYSvGkXGDuD2L3c0FX86ZxdEWiFWY/exec';
+
+                    const originalBtnText = finalizarBtn.innerHTML;
+                    finalizarBtn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">refresh</span> Guardando...';
+                    finalizarBtn.disabled = true;
+
+                    fetch(googleScriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: JSON.stringify(rowsToSave),
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8',
+                        }
+                    })
+                    .then(() => {
+                        alert("¡Registro enviado! Verifica tu Google Sheet para confirmar los datos.");
+                    })
+                    .catch(error => {
+                        console.error('Error enviando datos:', error);
+                        alert("Error de conexión al intentar enviar los datos.");
+                    })
+                    .finally(() => {
+                        finalizarBtn.innerHTML = originalBtnText;
+                        finalizarBtn.disabled = false;
+                    });
+                });
+            }
+        });
+    </script>
+</body></html>
