@@ -1,0 +1,427 @@
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Control de Humedad | Capspharma Quality</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body class="bg-background font-body text-on-surface flex min-h-screen">
+    <!-- SideNavBar Anchor -->
+    <aside
+      class="bg-surface-container-low dark:bg-slate-950 h-screen w-72 flex flex-col fixed left-0 top-16 bottom-0 z-40 py-8"
+    >
+      <div class="px-8 mb-8">
+        <p
+          class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold"
+        >
+          LINEA
+        </p>
+        <p class="text-primary font-bold text-sm">Capsulas de Gelatina</p>
+      </div>
+      <nav class="flex flex-col gap-1">
+        <a
+          class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+          href="control_peso.html"
+        >
+          <span class="material-symbols-outlined">monitor_weight</span>
+          <span class="text-sm font-medium">Control de Peso</span>
+        </a>
+        <a
+          class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+          href="index.html"
+        >
+          <span class="material-symbols-outlined">straighten</span>
+          <span class="text-sm font-medium">Control de Espesor</span>
+        </a>
+        <a
+          class="bg-white dark:bg-slate-800 text-primary dark:text-blue-300 font-bold rounded-l-lg ml-4 pl-4 py-3 border-r-4 border-primary flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >opacity</span
+          >
+          <span class="text-sm">Control de Humedad</span>
+        </a>
+        <a
+          class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+          href="#"
+        >
+          <span class="material-symbols-outlined">fact_check</span>
+          <span class="text-sm font-medium">Inspección Final</span>
+        </a>
+      </nav>
+      <div class="mt-auto px-8 space-y-6">
+        <div class="border-t border-outline-variant pt-6 space-y-3">
+          <a
+            class="flex items-center gap-2 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-base"
+              >verified_user</span
+            >
+            Protocolos de Seguridad
+          </a>
+          <a
+            class="flex items-center gap-2 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-base"
+              >help_outline</span
+            >
+            Soporte
+          </a>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 flex flex-col min-h-screen ml-72">
+      <!-- TopNavBar Anchor -->
+      <header
+        class="sticky top-0 z-40 bg-slate-50 dark:bg-slate-900 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm dark:shadow-none h-16 flex justify-between items-center w-full px-8"
+      >
+        <div class="flex items-center gap-4">
+          <h1
+            class="text-xl font-headline font-bold text-[#003e6f] dark:text-white tracking-widest uppercase"
+          >
+            Capspharma Quality
+          </h1>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-4 text-slate-500">
+            <button
+              class="material-symbols-outlined hover:text-primary transition-colors"
+            >
+              notifications
+            </button>
+            <button
+              class="material-symbols-outlined hover:text-primary transition-colors"
+            >
+              settings
+            </button>
+          </div>
+          <button
+            class="text-sm font-bold text-primary hover:bg-slate-100 px-4 py-2 rounded-lg transition-colors"
+          >
+            Cerrar Sesión
+          </button>
+        </div>
+      </header>
+      <!-- Main Form Canvas -->
+      <div class="p-8 flex-1">
+        <form class="max-w-6xl mx-auto space-y-8" id="humedadForm">
+          <!-- Section: Contextual Process Header -->
+          <section class="bg-surface-container-low rounded-xl p-8 space-y-6">
+            <div
+              class="flex items-end justify-between border-b border-outline-variant/30 pb-4"
+            >
+              <div>
+                <h2
+                  class="text-2xl font-headline font-extrabold text-primary leading-tight"
+                >
+                  Configuración de Proceso
+                </h2>
+                <p class="text-on-surface-variant text-sm">
+                  Ingrese los parámetros básicos del lote actual.
+                </p>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-primary-fixed px-3 py-1 rounded-full text-primary font-bold text-[10px] uppercase tracking-widest"
+              >
+                <span
+                  class="material-symbols-outlined text-sm"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >verified</span
+                >
+                Protocolo GMP-2024
+              </div>
+            </div>
+            <!-- Header Inputs Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-6">
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >MPCD No.</label
+                >
+                <select
+                  class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4"
+                  name="mpcd_no"
+                >
+                  <!-- JavaScript could populate this, but keeping it simple as requested -->
+                  <option selected="" value="15">15</option>
+                  <option value="16">16</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >Tamaño</label
+                >
+                <select
+                  class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4"
+                  name="tamano"
+                >
+                  <option selected="" value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="00E">00E</option>
+                  <option value="000">000</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >Turno</label
+                >
+                <select
+                  class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4"
+                  name="turno"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >Granel</label
+                >
+                <input
+                  class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4"
+                  name="granel"
+                  placeholder="ID Granel"
+                  type="text"
+                />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >Técnico</label
+                >
+                <input
+                  class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4"
+                  name="tecnico"
+                  list="tecnicos-list"
+                  placeholder="Técnico..."
+                  type="text"
+                />
+                <datalist id="tecnicos-list">
+                  <option value="ACOSTA"></option>
+                  <option value="BARRIOS"></option>
+                  <option value="BERDUGO"></option>
+                  <option value="MARRIAGA"></option>
+                  <option value="MARVIN"></option>
+                  <option value="RAMIREZ"></option>
+                  <option value="RIVERA"></option>
+                  <option value="RODRIGUEZ"></option>
+                </datalist>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >Fecha</label
+                >
+                <div class="relative">
+                  <input
+                    class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4 w-full"
+                    name="fecha"
+                    type="date"
+                    value="2024-05-24"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label
+                  class="text-label text-[0.6875rem] font-bold text-on-surface-variant uppercase tracking-wider"
+                  >Hora</label
+                >
+                <input
+                  class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium focus:ring-2 focus:ring-primary shadow-sm h-11 px-4"
+                  name="hora"
+                  type="time"
+                />
+              </div>
+            </div>
+          </section>
+          <!-- Section: Main Control Measurements -->
+          <section
+            class="bg-surface-container-lowest rounded-2xl p-10 shadow-[0_12px_32px_rgba(25,28,32,0.04)] border border-slate-100"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8"
+            >
+              <div class="flex items-center gap-3">
+                <div class="w-1.5 h-8 bg-primary rounded-full"></div>
+                <h2
+                  class="text-2xl font-headline font-extrabold text-on-surface tracking-tight uppercase"
+                >
+                  CONTROL DE HUMEDAD
+                </h2>
+              </div>
+              <div
+                class="flex items-center gap-4 bg-surface-container-low p-2 rounded-xl"
+              >
+                <div
+                  class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg shadow-sm border border-outline-variant"
+                >
+                  <span class="material-symbols-outlined text-sm text-primary"
+                    >barcode_scanner</span
+                  >
+                  <span
+                    class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant"
+                    >Modo Secuencial Activo</span
+                  >
+                </div>
+                <button
+                  id="btn-nuevo-registro"
+                  type="button"
+                  class="bg-primary px-4 py-2 rounded-lg text-on-primary font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+                >
+                  <span class="material-symbols-outlined text-sm">add</span>
+                  Nuevo Registro
+                </button>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto"
+            >
+              <!-- Humedad Tapa -->
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <span
+                    class="w-8 h-8 rounded-lg bg-secondary text-white flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-lg"
+                      >vertical_align_top</span
+                    >
+                  </span>
+                  <label class="text-lg font-headline font-bold text-on-surface"
+                    >% Humedad Tapa</label
+                  >
+                </div>
+                <div class="relative">
+                  <input
+                    class="w-full text-5xl font-headline font-bold text-center py-8 rounded-2xl bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white transition-all outline-none text-primary"
+                    name="humedad_tapa"
+                    placeholder="000.00"
+                    step="0.01"
+                    type="number"
+                  />
+                  <div
+                    class="absolute right-6 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold text-xl"
+                  >
+                    %
+                  </div>
+                </div>
+                <p
+                  class="mt-3 text-center text-xs text-on-surface-variant uppercase tracking-widest font-medium"
+                >
+                  Rango Estándar: 15.0% - 17.0%
+                </p>
+              </div>
+              <!-- Humedad Cuerpo -->
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <span
+                    class="w-8 h-8 rounded-lg bg-secondary text-white flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-lg"
+                      >vertical_align_bottom</span
+                    >
+                  </span>
+                  <label class="text-lg font-headline font-bold text-on-surface"
+                    >% Humedad Cuerpo</label
+                  >
+                </div>
+                <div class="relative">
+                  <input
+                    class="w-full text-5xl font-headline font-bold text-center py-8 rounded-2xl bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white transition-all outline-none text-primary"
+                    name="humedad_cuerpo"
+                    placeholder="000.00"
+                    step="0.01"
+                    type="number"
+                  />
+                  <div
+                    class="absolute right-6 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold text-xl"
+                  >
+                    %
+                  </div>
+                </div>
+                <p
+                  class="mt-3 text-center text-xs text-on-surface-variant uppercase tracking-widest font-medium"
+                >
+                  Rango Estándar: 15.0% - 17.0%
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Actions Bar -->
+          <div class="flex justify-center pt-6 pb-12">
+            <button
+              class="group relative overflow-hidden bg-primary hover:bg-primary-container text-white px-12 py-5 rounded-xl font-headline font-bold text-lg shadow-xl shadow-primary/20 transition-all flex items-center gap-4 active:scale-95"
+              onclick="finalizeRegistration()"
+              type="button"
+            >
+              <span class="material-symbols-outlined">save_as</span>
+              Finalizar Registro de Humedad
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- Footer Anchor -->
+      <footer
+        class="mt-auto bg-slate-50 dark:bg-slate-900 flex flex-col md:flex-row justify-between items-center w-full px-8 py-4 border-t border-slate-200/20"
+      >
+        <p
+          class="font-inter text-[10px] uppercase tracking-widest text-slate-400"
+        >
+          © 2024 Capspharma Quality. Todos los derechos reservados.
+        </p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+          <a
+            class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all"
+            href="#"
+            >Privacidad</a
+          >
+          <a
+            class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all"
+            href="#"
+            >Términos de Uso</a
+          >
+          <a
+            class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all"
+            href="#"
+            >Soporte Técnico</a
+          >
+          <a
+            class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all font-bold text-[#003e6f]"
+            href="#"
+            >Protocolos GMP</a
+          >
+        </div>
+      </footer>
+    </main>
+    <script src="js/humedad.js"></script>
+  </body>
+</html>
