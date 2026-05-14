@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function formatInputValue(input) {
     let val = parseFloat(input.value);
     if (isNaN(val)) val = 0;
-    input.value = val.toFixed(2);
+    input.value = val.toFixed(3);
   }
 
   // 3. Real-time Calculations
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const promCell = row.querySelector(".prom-cell");
     if (promCell) {
-      promCell.textContent = avg.toFixed(2);
+      promCell.textContent = avg.toFixed(3);
     }
   }
 
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
             row.querySelectorAll('input[type="number"]'),
           );
           const measurements = rowInputs.map((input) =>
-            parseFloat(parseFloat(input.value || 0).toFixed(2)),
+            parseFloat(parseFloat(input.value || 0).toFixed(3)),
           );
 
           const tipo = row.dataset.section.toUpperCase();

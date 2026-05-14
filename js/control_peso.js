@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalInput = row.querySelector('.input-total');
         
         const total = tapa + cuerpo;
-        totalInput.value = total.toFixed(2);
+        totalInput.value = total.toFixed(3);
     }
 
     // Real-time calculation
