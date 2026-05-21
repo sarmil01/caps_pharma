@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Parámetros MPCD - Capspharma Quality</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="js/tailwind-config.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/parametros_mpcd.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <header
+        class="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none fixed top-0 z-50 w-full flex justify-between items-center px-6 h-16">
+        <div class="text-xl font-bold text-[#003e6f] dark:text-blue-200 tracking-tighter uppercase">
+            Capspharma Quality
+        </div>
+        <nav class="hidden md:flex items-center gap-8 h-full">
+            <a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#003e6f] font-manrope text-sm font-bold tracking-tight h-full flex items-center"
+                href="#">Tablero</a>
+            <a class="text-[#003e6f] dark:text-blue-300 border-b-2 border-[#003e6f] pb-1 font-manrope text-sm font-bold tracking-tight h-full flex items-center mt-1"
+                href="#">Historial de Lotes</a>
+            <a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#003e6f] font-manrope text-sm font-bold tracking-tight h-full flex items-center"
+                href="#">Reportes</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-full text-slate-600">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-full text-slate-600">
+                <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+            </button>
+        </div>
+    </header>
+    <div class="flex flex-1 pt-16">
+        <!-- SideNavBar -->
+        <aside
+            class="bg-[#f2f3f9] dark:bg-slate-950 h-screen w-72 flex flex-col fixed left-0 top-16 bottom-0 z-40 py-8">
+            <div class="px-8 mb-8">
+                <p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">
+                    LINEA
+                </p>
+                <p class="text-primary font-bold text-sm">Capsulas de Gelatina</p>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+                    href="control_peso.html">
+                    <span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span>
+                    <span>Control de Peso</span>
+                </a>
+                <a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+                    href="index.html#control-espesor">
+                    <span class="material-symbols-outlined" data-icon="straighten">straighten</span>
+                    <span>Control de Espesor</span>
+                </a>
+                <a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+                    href="humedad.html">
+                    <span class="material-symbols-outlined" data-icon="opacity">opacity</span>
+                    <span>Control de Humedad</span>
+                </a>
+                <a class="bg-white dark:bg-slate-800 text-[#003e6f] dark:text-blue-300 font-bold rounded-l-lg ml-4 pl-4 py-3 border-r-4 border-[#003e6f] flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+                    href="parametros_mpcd.html">
+                    <span class="material-symbols-outlined" data-icon="tune"
+                        style="font-variation-settings: 'FILL' 1;">tune</span>
+                    <span>Parámetros MPCD</span>
+                </a>
+                <a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-white/50 dark:hover:bg-slate-900/50 flex items-center gap-3 transition-transform duration-200 hover:translate-x-1"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+                    <span>Inspección Final</span>
+                </a>
+            </nav>
+            <div class="mt-auto px-8 space-y-6">
+                <div class="border-t border-outline-variant pt-6 space-y-3">
+                    <a class="flex items-center gap-2 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold"
+                        href="#">
+                        <span class="material-symbols-outlined text-base">verified_user</span>
+                        Protocolos de Seguridad
+                    </a>
+                    <a class="flex items-center gap-2 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold"
+                        href="#">
+                        <span class="material-symbols-outlined text-base">help_outline</span>
+                        Soporte
+                    </a>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="ml-72 flex-1 p-8 bg-background">
+            <form class="max-w-7xl mx-auto space-y-10" id="parametros-form">
+                <!-- Page Header & Metadata -->
+                <section class="mb-10">
+                    <h1 class="text-3xl font-extrabold text-primary tracking-tight mb-6">
+                        Parámetros de Operación
+                    </h1>
+                    <p class="text-on-surface-variant font-body text-sm mb-6">Control del proceso de fabricación de
+                        cápsulas duras de gelatina.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-7 gap-4 bg-surface-container-low p-6 rounded-xl"
+                        id="header-metadata">
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="mpcd_no">MPCD No.</label>
+                            <select
+                                class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5"
+                                id="mpcd_no" name="mpcd_no">
+                                <option value="15">15</option>
+                                <option selected value="16">16</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="tamano">Tamaño</label>
+                            <select
+                                class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5"
+                                id="tamano" name="tamano">
+                                <option value="">Select...</option>
+                                <option value="000">000</option>
+                                <option value="00E">00E</option>
+                                <option value="0FL">0FL</option>
+                                <option selected value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="turno">Turno</label>
+                            <select
+                                class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5"
+                                id="turno" name="turno">
+                                <option value="1">1</option>
+                                <option selected value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="granel">Granel</label>
+                            <input
+                                class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5 uppercase w-full"
+                                id="granel" name="granel" placeholder="Granel" type="text" />
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="tecnico">Técnico</label>
+                            <input
+                                class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5 w-full"
+                                id="tecnico" name="tecnico" list="tecnicos-list" placeholder="Técnico..." type="text" />
+                            <datalist id="tecnicos-list">
+                                <option value="ACOSTA"></option>
+                                <option value="BARRIOS"></option>
+                                <option value="BERDUGO"></option>
+                                <option value="MARRIAGA"></option>
+                                <option value="MARVIN"></option>
+                                <option value="RAMIREZ"></option>
+                                <option value="RIVERA"></option>
+                                <option value="RODRIGUEZ"></option>
+                            </datalist>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="fecha">Fecha</label>
+                            <div class="relative">
+                                <input
+                                    class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5 w-full"
+                                    id="fecha" name="fecha" type="date" value="2024-05-20" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[0.6875rem] font-bold uppercase text-on-surface-variant tracking-wider"
+                                for="hora_inicio">Hora</label>
+                            <div class="relative">
+                                <input
+                                    class="bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary py-2.5 w-full"
+                                    id="hora_inicio" name="hora_inicio" type="time" value="08:00" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Registro de Contadores -->
+                <section class="bg-surface-container-low rounded-xl p-6 border border-surface-variant/50">
+                    <h3 class="section-header mb-6">
+                        <span class="material-symbols-outlined text-xl">calculate</span>
+                        Registro de Contadores
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Inmersiones -->
+                        <div
+                            class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-surface-container-highest">
+                            <h4 class="text-sm font-bold text-primary font-headline mb-4 uppercase tracking-wider">
+                                Inmersiones</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="min-w-0">
+                                    <label class="form-label-pharma truncate" for="inmersiones_inicial">Inicial</label>
+                                    <input class="form-input-pharma data-input min-w-0 w-full" id="inmersiones_inicial"
+                                        name="inmersiones_inicial" placeholder="0" type="number" />
+                                </div>
+                                <div class="min-w-0">
+                                    <label class="form-label-pharma truncate" for="inmersiones_final">Final</label>
+                                    <input class="form-input-pharma data-input min-w-0 w-full" id="inmersiones_final"
+                                        name="inmersiones_final" placeholder="0" type="number" />
+                                </div>
+                                <div class="min-w-0">
+                                    <label class="form-label-pharma truncate" for="inmersiones_total">Total</label>
+                                    <input
+                                        class="form-input-pharma bg-surface-container-high cursor-not-allowed text-primary font-bold min-w-0 w-full"
+                                        id="inmersiones_total" name="inmersiones_total" placeholder="0" type="number"
+                                        readonly tabindex="-1" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tiempo Perdido -->
+                        <div
+                            class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-surface-container-highest">
+                            <h4 class="text-sm font-bold text-primary font-headline mb-4 uppercase tracking-wider">
+                                Tiempo Perdido (Horas)</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="min-w-0">
+                                    <label class="form-label-pharma truncate"
+                                        for="tiempo_perdido_inicial">Inicial</label>
+                                    <input class="form-input-pharma data-input min-w-0 w-full"
+                                        id="tiempo_perdido_inicial" name="tiempo_perdido_inicial" placeholder="0.00"
+                                        step="0.10" type="number" />
+                                </div>
+                                <div class="min-w-0">
+                                    <label class="form-label-pharma truncate" for="tiempo_perdido_final">Final</label>
+                                    <input class="form-input-pharma data-input min-w-0 w-full" id="tiempo_perdido_final"
+                                        name="tiempo_perdido_final" placeholder="0.00" step="0.10" type="number" />
+                                </div>
+                                <div class="min-w-0">
+                                    <label class="form-label-pharma truncate" for="tiempo_perdido_total">Total</label>
+                                    <input
+                                        class="form-input-pharma bg-surface-container-high cursor-not-allowed text-primary font-bold min-w-0 w-full"
+                                        id="tiempo_perdido_total" name="tiempo_perdido_total" placeholder="0.00"
+                                        step="0.10" type="number" readonly tabindex="-1" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Data Entry Grid: Lado Tapa & Cuerpo -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- LADO TAPA -->
+                    <section
+                        class="bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(25,28,32,0.04)] border border-surface-container-highest overflow-hidden">
+                        <div
+                            class="bg-surface-container-high px-6 py-4 border-b border-surface-container-highest flex items-center justify-between">
+                            <h3 class="text-primary font-headline font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-secondary">arrow_upward</span>
+                                LADO TAPA
+                            </h3>
+                            <span
+                                class="text-xs font-bold text-on-surface-variant bg-surface px-2 py-1 rounded-md uppercase tracking-wider border border-outline-variant/30">Línea
+                                1</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <!-- Parámetros -->
+                                <div>
+                                    <label class="form-label-pharma" for="tapa_visc_sel">Viscosidad Dish Sel.</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="tapa_visc_sel"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">cP</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label-pharma" for="tapa_visc_reg">Viscosidad Dish Reg.</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="tapa_visc_reg"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">cP</span>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 h-px bg-surface-container-highest my-2 w-full"></div>
+                                <div>
+                                    <label class="form-label-pharma" for="tapa_t_setpoint">T. SetPoint agua dish</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="tapa_t_setpoint"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">°C</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label-pharma" for="tapa_t_gelatina">T. Gelatina dish</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="tapa_t_gelatina"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">°C</span>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 h-px bg-surface-container-highest my-2 w-full"></div>
+                                <!-- Secadores Group 1 & 2 -->
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #1</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="tapa_flujo_sec1" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input" id="tapa_t_sec1"
+                                                placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #2</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="tapa_flujo_sec2" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input" id="tapa_t_sec2"
+                                                placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Secadores Group 3 & 4 -->
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #3</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="tapa_flujo_sec3" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input" id="tapa_t_sec3"
+                                                placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #4</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="tapa_flujo_sec4" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input" id="tapa_t_sec4"
+                                                placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 h-px bg-surface-container-highest my-2 w-full"></div>
+                                <!-- Acondicionador -->
+                                <div>
+                                    <label class="form-label-pharma" for="tapa_flujo_acon">Flujo Acondicionador</label>
+                                    <input class="form-input-pharma data-input" id="tapa_flujo_acon" placeholder="0.000"
+                                        step="0.001" type="number" />
+                                </div>
+                                <div>
+                                    <label class="form-label-pharma" for="tapa_t_acon">T. Acondicionador</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="tapa_t_acon" placeholder="0.000"
+                                            step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- LADO CUERPO -->
+                    <section
+                        class="bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(25,28,32,0.04)] border border-surface-container-highest overflow-hidden">
+                        <div
+                            class="bg-surface-container-high px-6 py-4 border-b border-surface-container-highest flex items-center justify-between">
+                            <h3 class="text-primary font-headline font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-secondary">arrow_downward</span>
+                                LADO CUERPO
+                            </h3>
+                            <span
+                                class="text-xs font-bold text-on-surface-variant bg-surface px-2 py-1 rounded-md uppercase tracking-wider border border-outline-variant/30">Línea
+                                2</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                                <!-- Parámetros (Mirrored from Tapa) -->
+                                <div>
+                                    <label class="form-label-pharma" for="cuerpo_visc_sel">Viscosidad Dish Sel.</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="cuerpo_visc_sel"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">cP</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label-pharma" for="cuerpo_visc_reg">Viscosidad Dish Reg.</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="cuerpo_visc_reg"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">cP</span>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 h-px bg-surface-container-highest my-2 w-full"></div>
+                                <div>
+                                    <label class="form-label-pharma" for="cuerpo_t_setpoint">T. SetPoint agua
+                                        dish</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="cuerpo_t_setpoint"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">°C</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label-pharma" for="cuerpo_t_gelatina">T. Gelatina dish</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="cuerpo_t_gelatina"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">°C</span>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 h-px bg-surface-container-highest my-2 w-full"></div>
+                                <!-- Secadores Group 1 & 2 -->
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #1</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_flujo_sec1" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_t_sec1" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #2</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_flujo_sec2" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_t_sec2" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Secadores Group 3 & 4 -->
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #3</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_flujo_sec3" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_t_sec3" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-surface rounded-lg p-3 border border-surface-container-highest/50">
+                                    <p class="text-xs font-bold text-on-surface-variant mb-3 uppercase tracking-wider">
+                                        Secador #4</p>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Flujo</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_flujo_sec4" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="text-[0.65rem] text-outline font-semibold mb-1 block">Temperatura
+                                                (°C)</label>
+                                            <input class="form-input-pharma py-1.5 text-sm data-input"
+                                                id="cuerpo_t_sec4" placeholder="0.000" step="0.001" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 h-px bg-surface-container-highest my-2 w-full"></div>
+                                <!-- Acondicionador -->
+                                <div>
+                                    <label class="form-label-pharma" for="cuerpo_flujo_acon">Flujo
+                                        Acondicionador</label>
+                                    <input class="form-input-pharma data-input" id="cuerpo_flujo_acon"
+                                        placeholder="0.000" step="0.001" type="number" />
+                                </div>
+                                <div>
+                                    <label class="form-label-pharma" for="cuerpo_t_acon">T. Acondicionador</label>
+                                    <div class="relative">
+                                        <input class="form-input-pharma data-input" id="cuerpo_t_acon"
+                                            placeholder="0.000" step="0.001" type="number" />
+                                        <span class="absolute right-3 top-2 text-xs text-outline font-medium">°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- Footer Metricas: Humedad & Cuarto -->
+                <section class="bg-surface-container-low rounded-xl p-6 border border-surface-variant/50">
+                    <h3 class="section-header mb-6">
+                        <span class="material-symbols-outlined text-xl">air</span>
+                        Condiciones Ambientales
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div
+                            class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-surface-container-highest">
+                            <label class="form-label-pharma" for="humedad_relativa">Humedad Relativa</label>
+                            <div class="relative mt-2">
+                                <input class="form-input-pharma text-lg font-bold text-primary data-input"
+                                    id="humedad_relativa" placeholder="0.000" step="0.001" type="number" />
+                                <span class="absolute right-3 top-2.5 text-sm text-outline font-medium">%</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-surface-container-highest">
+                            <label class="form-label-pharma" for="humedad_uma_mpcd">Humedad UMA MPCD</label>
+                            <div class="relative mt-2">
+                                <input class="form-input-pharma text-lg font-bold text-primary data-input"
+                                    id="humedad_uma_mpcd" placeholder="0.000" step="0.001" type="number" />
+                                <span class="absolute right-3 top-2.5 text-sm text-outline font-medium">%</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-surface-container-highest">
+                            <label class="form-label-pharma" for="t_cuarto">T. Cuarto</label>
+                            <div class="relative mt-2">
+                                <input class="form-input-pharma text-lg font-bold text-primary data-input" id="t_cuarto"
+                                    placeholder="0.000" step="0.001" type="number" />
+                                <span class="absolute right-3 top-2.5 text-sm text-outline font-medium">°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Limpieza -->
+                <section class="bg-surface-container-low rounded-xl p-6 border border-surface-variant/50">
+                    <h3 class="section-header mb-6">
+                        <span class="material-symbols-outlined text-xl">cleaning_services</span>
+                        Limpieza
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div
+                            class="bg-surface-container-lowest p-4 rounded-lg shadow-sm border border-surface-container-highest">
+                            <label class="form-label-pharma" for="hora_limpieza">Hora de limpieza de MPCD y
+                                alrededores</label>
+                            <div class="relative mt-2">
+                                <input class="form-input-pharma data-input" id="hora_limpieza" name="hora_limpieza"
+                                    type="time" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Floating Action Bar for Submission -->
+                <div
+                    class="fixed bottom-0 left-0 md:left-72 right-0 bg-surface-container-lowest border-t border-surface-container-highest p-4 flex justify-end z-30 shadow-[0_-4px_16px_rgba(0,0,0,0.02)] glass-panel">
+                    <div class="max-w-7xl mx-auto w-full flex justify-end items-center gap-4">
+                        <span class="text-sm text-on-surface-variant font-medium hidden sm:inline-block">Verifique los
+                            datos antes de guardar</span>
+                        <button
+                            class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-lg font-headline font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary flex items-center gap-2"
+                            id="btn-submit" type="button">
+                            <span class="material-symbols-outlined text-sm">save</span>
+                            Finalizar Registro de Parámetros
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+    <!-- Footer Anchor -->
+    <footer
+        class="ml-72 mt-auto bg-slate-50 dark:bg-slate-900 flex flex-col md:flex-row justify-between items-center px-8 py-4 border-t border-slate-200/20">
+        <p class="font-inter text-[10px] uppercase tracking-widest text-slate-400">
+            © 2024 Capspharma Quality. Todos los derechos reservados.
+        </p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all"
+                href="#">Privacidad</a>
+            <a class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all"
+                href="#">Términos de Uso</a>
+            <a class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all"
+                href="#">Soporte Técnico</a>
+            <a class="font-inter text-[10px] uppercase tracking-widest text-slate-400 hover:text-[#00658b] underline transition-all font-bold text-[#003e6f]"
+                href="#">Protocolos GMP</a>
+        </div>
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="js/parametros_mpcd.js"></script>
+</body>
+
+</html>

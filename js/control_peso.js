@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('field-turno').selectedIndex = 0;
             document.getElementById('field-granel').value = "";
             document.getElementById('field-tecnico').value = "";
-            
+
             if (dateInput) {
                 dateInput.value = new Date().toISOString().split('T')[0];
             }
@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Reset de inputs de la tabla
             const inputTapa = document.querySelector('.input-tapa');
             const inputCuerpo = document.querySelector('.input-cuerpo');
-            
+
             if (inputTapa) inputTapa.value = "0.00";
             if (inputCuerpo) inputCuerpo.value = "0.00";
-            
+
             const tr = tbody.querySelector('tr');
             if (tr) calculateRowTotal(tr);
-            
+
             // Foco y selección en PESO TAPA
             if (inputTapa) {
                 inputTapa.focus();
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tapa = parseFloat(row.querySelector('.input-tapa').value) || 0;
         const cuerpo = parseFloat(row.querySelector('.input-cuerpo').value) || 0;
         const totalInput = row.querySelector('.input-total');
-        
+
         const total = tapa + cuerpo;
         totalInput.value = total.toFixed(3);
     }
@@ -97,10 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (total === 0) {
                 Swal.fire({
-                  icon: 'warning',
-                  title: 'Datos incompletos',
-                  text: 'No hay datos para guardar (el peso total es 0).',
-                  confirmButtonColor: '#00658b'
+                    icon: 'warning',
+                    title: 'Datos incompletos',
+                    text: 'No hay datos para guardar (el peso total es 0).',
+                    confirmButtonColor: '#00658b'
                 });
                 return;
             }
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const rowsToSave = [flatRow];
 
-            const googleScriptURL = "https://script.google.com/macros/s/AKfycbyuD_uoWnS0pFBW1k4Dl9Adp-dko1gpAB6-Plo_4Rw4M15_yD16Cr3A_7zhCxJ7yGo0/exec";
+            const googleScriptURL = GOOGLE_SCRIPT_URL;
 
             const originalBtnText = finalizarBtn.innerHTML;
             finalizarBtn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">refresh</span> Guardando...';
@@ -134,33 +134,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     "Content-Type": "text/plain;charset=utf-8",
                 },
             })
-            .then(() => {
-                Swal.fire({
-                  icon: 'success',
-                  title: '¡Guardado exitoso!',
-                  text: 'Verifica tu Google Sheet para confirmar los datos.',
-                  confirmButtonColor: '#00658b',
-                  timer: 3000
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Guardado exitoso!',
+                        text: 'Verifica tu Google Sheet para confirmar los datos.',
+                        confirmButtonColor: '#00658b',
+                        timer: 3000
+                    });
+                    const btnNuevoRegistro = document.getElementById("btn-nuevo-registro");
+                    if (btnNuevoRegistro) btnNuevoRegistro.click();
+                })
+                .catch((error) => {
+                    console.error("Error enviando datos:", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error de conexión',
+                        text: 'Ocurrió un error al intentar enviar los datos.',
+                        confirmButtonColor: '#00658b'
+                    });
+                })
+                .finally(() => {
+                    finalizarBtn.innerHTML = originalBtnText;
+                    finalizarBtn.disabled = false;
                 });
-                const btnNuevoRegistro = document.getElementById("btn-nuevo-registro");
-                if (btnNuevoRegistro) btnNuevoRegistro.click();
-            })
-            .catch((error) => {
-                console.error("Error enviando datos:", error);
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Error de conexión',
-                  text: 'Ocurrió un error al intentar enviar los datos.',
-                  confirmButtonColor: '#00658b'
-                });
-            })
-            .finally(() => {
-                finalizarBtn.innerHTML = originalBtnText;
-                finalizarBtn.disabled = false;
-            });
         });
     }
-    
+
     // Initialize calculation
     calculateRowTotal(tbody.querySelector('tr'));
 });

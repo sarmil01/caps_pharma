@@ -166,8 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const googleScriptURL =
-        "https://script.google.com/macros/s/AKfycbyuD_uoWnS0pFBW1k4Dl9Adp-dko1gpAB6-Plo_4Rw4M15_yD16Cr3A_7zhCxJ7yGo0/exec";
+      const googleScriptURL = GOOGLE_SCRIPT_URL;
 
       const originalBtnText = finalizarBtn.innerHTML;
       finalizarBtn.innerHTML =

@@ -34,7 +34,7 @@ function finalizeRegistration() {
   ];
 
   const rowsToSave = [flatRow];
-  const googleScriptURL = "https://script.google.com/macros/s/AKfycbyuD_uoWnS0pFBW1k4Dl9Adp-dko1gpAB6-Plo_4Rw4M15_yD16Cr3A_7zhCxJ7yGo0/exec";
+  const googleScriptURL = GOOGLE_SCRIPT_URL;
 
   const btn = document.querySelector('button[onclick="finalizeRegistration()"]');
   let originalBtnText = "";
@@ -52,32 +52,32 @@ function finalizeRegistration() {
       "Content-Type": "text/plain;charset=utf-8",
     },
   })
-  .then(() => {
-    Swal.fire({
-      icon: 'success',
-      title: '¡Guardado exitoso!',
-      text: 'Verifica tu Google Sheet para confirmar los datos.',
-      confirmButtonColor: '#00658b',
-      timer: 3000
+    .then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Guardado exitoso!',
+        text: 'Verifica tu Google Sheet para confirmar los datos.',
+        confirmButtonColor: '#00658b',
+        timer: 3000
+      });
+      const btnNuevoRegistro = document.getElementById("btn-nuevo-registro");
+      if (btnNuevoRegistro) btnNuevoRegistro.click();
+    })
+    .catch((error) => {
+      console.error("Error enviando datos:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de conexión',
+        text: 'Ocurrió un error al intentar enviar los datos.',
+        confirmButtonColor: '#00658b'
+      });
+    })
+    .finally(() => {
+      if (btn) {
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+      }
     });
-    const btnNuevoRegistro = document.getElementById("btn-nuevo-registro");
-    if (btnNuevoRegistro) btnNuevoRegistro.click();
-  })
-  .catch((error) => {
-    console.error("Error enviando datos:", error);
-    Swal.fire({
-      icon: 'error',
-      title: 'Error de conexión',
-      text: 'Ocurrió un error al intentar enviar los datos.',
-      confirmButtonColor: '#00658b'
-    });
-  })
-  .finally(() => {
-    if (btn) {
-      btn.innerHTML = originalBtnText;
-      btn.disabled = false;
-    }
-  });
 }
 
 // Set default date to today
