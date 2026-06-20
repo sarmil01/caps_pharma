@@ -1,2 +1,2 @@
 // Configuración global de la aplicación
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypfsb2hvSXm3ptqwc-HOcFDTQkbnP8FWMuE6zx3s7lEHRTFQ1LkGW8txDu-fE80vtS/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpA_uDPPgFXPNXa5ZWTOdA9JzNspKzR4nbefjqX3K2uXQkGPdfRnc4pnN5AH0W7P5m/exec";
